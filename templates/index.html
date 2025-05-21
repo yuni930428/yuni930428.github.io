@@ -4,6 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>飲食計劃</title>
+    <link rel="stylesheet" href="..static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>個性化飲食計劃</h1>
+        <form id="dietForm">
+            <div class="form-group">
+                <label for="age">年齡:</label>
+                <input type="number" name="age" id="age" required>
+            </div>
+            <div class="form-group">
+                <label for="weight">體重 (kg):</label>
+                <input type="number" step="0.1" name="weight" id="weight" required>
+            </div>
+            <div class="form-group">
+                <label for="height">身高 (cm):</label>
+                <input type="number" step="0.1" name="height" id="height" required>
+            </div>
+            <div class="form-group">
+                <label for="goal">目標:</label>
+                <select name="goal" id="goal" required>
+                    <option value="weight_loss">減重</option>
+                    <option value="muscle_gain">增肌</option>
+                    <option value="maintain_weight">維持體重</option>
+                    <option value="balanced">均衡飲食</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="preference">飲食偏好:</label>
+                <select name="preference" id="preference" required>
+                    <option value="vegetarian">素食</option>
+                    <option value="non_vegetarian">非素食</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">提交</button>
+        </form>
+    </div>
+
+    <script>
+        // 定義飲食計劃數據
+        const dietPlans = {
+            "weight_loss": [
+                { "name": "低卡蔬菜沙拉" },
+                { "name": "藜麥沙拉" },
+                { "name": "酪梨沙拉" },
+                { "name": "無米壽司" },
+                { "name": "水果沙拉" }
+            ],
+            "muscle_gain": [
+                { "name": "高蛋白雞胸肉" },
+                { "name": "煎鮭魚" },
+                { "name": "蛋白質奶昔" },
+                { "name": "牛排" },
+                { "name": "雞蛋料理" }
+            ],
+            "balanced": [
+                { "name": "全麥三明治" },
+                { "name": "鮭魚蔬菜湯" },
+                { "name": "義大利麵" },
+                { "name": "櫛瓜煎餅" },
+                { "name": "全麥麵包" }
+            ],
+            "maintain_weight": [
+                { "name": "雞肉蔬菜沙拉" },
+                { "name": "海鮮配蔬菜" },
+                { "name": "燕麥粥" },
+                { "name": "蒸魚配青菜" }
+            ]
+        };
+
+        // 表單提交時處理
+        document.getElementById("dietForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // 防止表單提交
+
+            // 獲取用戶輸入的數據
+            const weight = parseFloat(document.getElementById("weight").value);
+            const height = parseFloat(document.getElementById("height").value);
+            const goal = document.getElementById("goal").value;
+            const preference = document.getElementById("preference").value;
+
+            // 計算 BMI
+            const bmi = weight / Math.pow(height / 100, 2);  // BMI = 體重 / (身高^2)
+
+            // 根據 BMI 顯示健康狀況
+            let healthStatus;
+            if (bmi < 18.5) {
+                healthStatus = "體重過輕";
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                healthStatus = "正常範圍";
+            } else if (bmi >= 25 && bmi < 29.9) {
+                healthStatus = "過重";
+            } else {
+                healthStatus = "肥胖";
+            }
+
+            // 根據目標選擇飲食計劃
+            let selectedDiet = dietPlans[goal];
+
+            // 如果偏好是素食，則過濾掉含肉類的選項
+            if (preference === "vegetarian") {
+                selectedDiet = selectedDiet.filter(item => !item.name.includes("肉"));
+            }
+
+            // 隨機選擇一個飲食建議
+            const randomDiet = selectedDiet[Math.floor(Math.random() * selectedDiet.length)];
+
+            // 在頁面顯示結果
+            alert(`BMI: ${bmi.toFixed(2)}\n健康狀況: ${healthStatus}\n飲食建議: ${randomDiet.name}`);
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飲食計劃</title>
     <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
