@@ -36,9 +36,8 @@ diet_plans = {
 
 
 @app.route('/')
-def home():
+def index():
     return render_template('index.html')
-
 
 @app.route('/get_diet', methods=['POST'])
 def get_diet():
@@ -82,7 +81,11 @@ def get_diet():
 
 @app.route('/result')
 def result():
-    return render_template('result.html')
+    # 假設這是你從表單中取得的動態數據
+    selected_diet = {"name": "低卡蔬菜沙拉", "image": "田園沙拉.jpg.webp"}
+    bmi = 23.5
+    health_status = "正常範圍"
+    return render_template('result.html', selected_diet=selected_diet, bmi=bmi, health_status=health_status)
 
 
 if __name__ == '__main__':
