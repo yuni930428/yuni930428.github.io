@@ -4,7 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>飲食計劃結果</title>
-    <link rel="stylesheet" href="..static/styles.css">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>根據您的資料，我們為您提供以下建議：</h1>
+        <div class="result">
+            <p><strong>BMI：</strong> <span id="bmi"></span></p>
+            <p><strong>健康狀況：</strong> <span id="healthStatus"></span></p>
+
+            <h2>飲食建議：</h2>
+            <div class="diet-suggestion">
+                <p id="dietName"></p> <!-- 顯示飲食名稱 -->
+            </div>
+            <a href="/" class="back-btn">返回</a>
+        </div>
+    </div>
+
     <script>
         // 假設這是靜態化的飲食計劃數據
         const dietPlans = {
@@ -37,9 +53,9 @@
             ]
         };
 
-        // 假設這是表單提交後返回的結果
-        const bmi = 23.5;  // 假設 BMI
-        const healthStatus = "正常範圍";  // 假設健康狀況
+        // 從 localStorage 獲取 BMI 和健康狀況
+        const bmi = parseFloat(localStorage.getItem("bmi"));
+        const healthStatus = localStorage.getItem("healthStatus");
         const goal = "weight_loss";  // 假設目標是減重
 
         // 根據目標選擇飲食計劃
@@ -58,20 +74,6 @@
             document.getElementById("dietName").textContent = diet.name;
         };
     </script>
-</head>
-<body>
-    <div class="container">
-        <h1>根據您的資料，我們為您提供以下建議：</h1>
-        <div class="result">
-            <p><strong>BMI：</strong> <span id="bmi"></span></p>
-            <p><strong>健康狀況：</strong> <span id="healthStatus"></span></p>
-
-            <h2>飲食建議：</h2>
-            <div class="diet-suggestion">
-                <p id="dietName"></p> <!-- 顯示飲食名稱 -->
-            </div>
-            <a href="/" class="back-btn">返回</a>
-        </div>
-    </div>
 </body>
 </html>
+
