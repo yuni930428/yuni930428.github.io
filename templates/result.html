@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>飲食計劃結果</title>
-    <link rel="stylesheet" href="..static/styles.css">
+    <link rel="stylesheet" href="static/styles.css">
     <script>
         // 假設這是靜態化的飲食計劃數據
         const dietPlans = {
@@ -58,6 +58,32 @@
             document.getElementById("dietName").textContent = diet.name;
         };
     </script>
+    <style>
+        /* 動畫設計 */
+        .animated-corner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        /* 動畫效果：讓元素來回移動 */
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);  /* 垂直移動 */
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -73,7 +99,8 @@
             <a href="/" class="back-btn">返回</a>
         </div>
     </div>
+
+    <!-- 動畫元素放置在右下角 -->
+    <div class="animated-corner"></div>
 </body>
 </html>
-
-
