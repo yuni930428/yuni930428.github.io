@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>飲食計劃結果</title>
-      <link rel="stylesheet" href="../static/styles.css">
-
+    <!-- 使用相對路徑引用 CSS -->
+    <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
     <div class="container">
@@ -17,13 +17,15 @@
             <h2>飲食建議：</h2>
             <div class="diet-suggestion">
                 <p>{{ selected_diet['name'] }}</p>
-                <img src="{{ url_for('static', filename=selected_diet['image']) }}" alt="{{ selected_diet['name'] }}" class="diet-image">
+                <!-- 使用相對路徑引用圖片 -->
+                <img src="static/{{ selected_diet['image'] }}" alt="{{ selected_diet['name'] }}" class="diet-image">
             </div>
             <a href="/" class="back-btn">返回</a>
         </div>
     </div>
 </body>
 </html>
+
 
 
 
