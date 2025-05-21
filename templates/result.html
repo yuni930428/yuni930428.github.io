@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>飲食計劃結果</title>
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href=".static/styles.css">
     <script>
          // 假設這是你靜態化的飲食計劃數據
         const dietPlans = {
@@ -55,7 +55,7 @@
             document.getElementById("bmi").textContent = bmi;
             document.getElementById("healthStatus").textContent = healthStatus;
             document.getElementById("dietName").textContent = diet.name;
-            document.getElementById("dietImage").src = "static/" + diet.image;
+            document.getElementById("dietImage").src = ".static/" + diet.image;;
         };
     </script>
 </head>
