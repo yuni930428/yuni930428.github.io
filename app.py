@@ -80,6 +80,10 @@ def get_diet():
 
     return render_template('result.html', selected_diet=selected_diet, bmi=bmi, health_status=health_status)
 
+@app.route('/result')
+def result():
+    return render_template('result.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
