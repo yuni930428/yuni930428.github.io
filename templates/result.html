@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飲食計劃結果</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>根據您的資料，我們為您提供以下建議：</h1>
+        <div class="result">
+            <p><strong>BMI：</strong> {{ bmi }}</p>
+            <p><strong>健康狀況：</strong> {{ health_status }}</p>
+
+            <h2>飲食建議：</h2>
+            <div class="diet-suggestion">
+                <p>{{ selected_diet['name'] }}</p>
+                <img src="{{ url_for('static', filename=selected_diet['image']) }}" alt="{{ selected_diet['name'] }}" class="diet-image">
+            </div>
+            <a href="/" class="back-btn">返回</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
