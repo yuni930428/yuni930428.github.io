@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>飲食計劃結果</title>
-    <link rel="stylesheet" href="..static/styles.css">
+    <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
     <div class="container">
@@ -22,7 +22,21 @@
     </div>
 
     <script>
-        // 假設這是靜態化的飲食計劃數據
+        // 從 localStorage 獲取 BMI 和健康狀況
+        const bmi = parseFloat(localStorage.getItem("bmi"));
+        const healthStatus = localStorage.getItem("healthStatus");
+        const goal = localStorage.getItem("goal");
+
+        // 顯示 BMI 和健康狀況
+        if (!isNaN(bmi)) {
+            document.getElementById("bmi").textContent = bmi.toFixed(2);
+            document.getElementById("healthStatus").textContent = healthStatus;
+        } else {
+            document.getElementById("bmi").textContent = "無法計算 BMI";
+            document.getElementById("healthStatus").textContent = "無法判斷健康狀況";
+        }
+
+        // 根據目標選擇飲食計劃
         const dietPlans = {
             "weight_loss": [
                 { "name": "低卡蔬菜沙拉" },
@@ -53,11 +67,6 @@
             ]
         };
 
-        // 從 localStorage 獲取 BMI 和健康狀況
-        const bmi = parseFloat(localStorage.getItem("bmi"));
-        const healthStatus = localStorage.getItem("healthStatus");
-        const goal = "weight_loss";  // 假設目標是減重
-
         // 根據目標選擇飲食計劃
         let selectedDiet = dietPlans[goal];
 
@@ -69,11 +78,8 @@
 
         window.onload = function() {
             const diet = getRandomDiet();
-            document.getElementById("bmi").textContent = bmi;
-            document.getElementById("healthStatus").textContent = healthStatus;
             document.getElementById("dietName").textContent = diet.name;
         };
     </script>
 </body>
 </html>
-
