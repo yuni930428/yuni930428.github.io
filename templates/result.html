@@ -4,19 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>飲食計劃結果</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href=".static/styles.css">
+    <script>
+         // 假設這是你靜態化的飲食計劃數據
+        const dietPlans = {
+            "weight_loss": [
+        {"name": "低卡蔬菜沙拉", "image": "田園沙拉.jpg.webp"},
+        {"name": "藜麥沙拉", "image": "藜麥沙拉.JPG"},
+        {"name": "酪梨沙拉", "image": "酪梨沙拉.jpg"},
+        {"name": "無米壽司", "image": "無米壽司.jpg"},
+        {"name": "水果沙拉", "image": "水果沙拉.jpg"}
+    ],
+    "muscle_gain": [
+        {"name": "高蛋白雞胸肉", "image": "#179 水煮雞胸肉.jpg"},
+        {"name": "煎鮭魚", "image": " -26.jpg"},
+        {"name": "蛋白質奶昔", "image": "高蛋白咖啡香蕉奶昔 (全素) Protein Banana Coffee Smoothie - Barrel Leaf 桶子葉.jpg"},
+        {"name": "牛排", "image": "Seared Strip Steak + Baby Broccoli | Hungryroot.jpg"},
+        {"name": "雞蛋料理", "image": "早餐食譜,便當食譜-豐富蔬菜烘烤玉子燒 | MASAの料理ABC.jpg"}
+    ],
+    "balanced": [
+        {"name": "全麥三明治", "image": "伊莉的店 全麥三明治.jpg"},
+        {"name": "鮭魚蔬菜湯", "image": "鮭魚頭豆腐湯 by happeabites.jpg"},
+        {"name": "義大利麵", "image": "義大利海鮮冷麵【HOLA幸福食堂】－男人廚房1+1｜痞客邦.jpg"},
+        {"name": "櫛瓜煎餅", "image": "夏南瓜(櫛瓜)煎餅.jpg"},
+        {"name": "全麥麵包", "image": "現磨麵粉～全麥核桃蔓越莓歐包.jpg"}
+    ],
+    "maintain_weight": [
+        {"name": "雞肉蔬菜沙拉", "image": "味增雞肉蔬菜沙拉.jpg"},
+        {"name": "海鮮配蔬菜", "image": "Dinner Recipe.jpg"},
+        {"name": "燕麥粥", "image": "Apple Cinnamon Buckwheat Porridge [Vegan].jpg"},
+        {"name": "蒸魚配青菜", "image": "蒸魚配青菜.jpg"}
+    ]
+};
+        // 假設這是表單提交後返回的結果
+        const bmi = 23.5;  // 假設 BMI
+        const healthStatus = "正常範圍";  // 假設健康狀況
+        const goal = "weight_loss";  // 假設目標是減重
+
+        // 根據目標選擇飲食計劃
+        let selectedDiet = dietPlans[goal];
+
+        // 隨機選擇一個飲食建議
+        function getRandomDiet() {
+            const randomIndex = Math.floor(Math.random() * selectedDiet.length);
+            return selectedDiet[randomIndex];
+        }
+
+        window.onload = function() {
+            const diet = getRandomDiet();
+            document.getElementById("bmi").textContent = bmi;
+            document.getElementById("healthStatus").textContent = healthStatus;
+            document.getElementById("dietName").textContent = diet.name;
+            document.getElementById("dietImage").src = "static/" + diet.image;
+        };
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>根據您的資料，我們為您提供以下建議：</h1>
         <div class="result">
-            <p><strong>BMI：</strong> {{ bmi }}</p>
-           <p><strong>健康狀況：</strong> {{ health_status }}</p>
+            <p><strong>BMI：</strong> <span id="bmi"></span></p>
+            <p><strong>健康狀況：</strong> <span id="healthStatus"></span></p>
 
             <h2>飲食建議：</h2>
             <div class="diet-suggestion">
-               <p>{{ selected_diet['name'] }}</p>
-                <img src="{{ url_for('static', filename=selected_diet['image']) }}" alt="{{ selected_diet['name'] }}" class="diet-image">
+                <p id="dietName"></p> <!-- 顯示飲食名稱 -->
+                <img id="dietImage" class="diet-image" alt="飲食建議圖片"> <!-- 顯示圖片 -->
             </div>
             <a href="/" class="back-btn">返回</a>
         </div>
