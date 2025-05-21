@@ -40,10 +40,50 @@
             </div>
             <button type="submit" class="submit-btn">提交</button>
         </form>
+
+        <!-- 顯示計算結果 -->
+        <div id="result" style="display: none;">
+            <h2>您的健康狀況和飲食建議：</h2>
+            <p><strong>BMI：</strong> <span id="bmiResult"></span></p>
+            <p><strong>健康狀況：</strong> <span id="healthStatusResult"></span></p>
+            <h3>飲食建議：</h3>
+            <p id="dietSuggestion"></p>
+        </div>
     </div>
 
     <script>
-        // 計算 BMI 和健康狀況的邏輯
+        // 定義飲食計劃數據
+        const dietPlans = {
+            "weight_loss": [
+                { "name": "低卡蔬菜沙拉" },
+                { "name": "藜麥沙拉" },
+                { "name": "酪梨沙拉" },
+                { "name": "無米壽司" },
+                { "name": "水果沙拉" }
+            ],
+            "muscle_gain": [
+                { "name": "高蛋白雞胸肉" },
+                { "name": "煎鮭魚" },
+                { "name": "蛋白質奶昔" },
+                { "name": "牛排" },
+                { "name": "雞蛋料理" }
+            ],
+            "balanced": [
+                { "name": "全麥三明治" },
+                { "name": "鮭魚蔬菜湯" },
+                { "name": "義大利麵" },
+                { "name": "櫛瓜煎餅" },
+                { "name": "全麥麵包" }
+            ],
+            "maintain_weight": [
+                { "name": "雞肉蔬菜沙拉" },
+                { "name": "海鮮配蔬菜" },
+                { "name": "燕麥粥" },
+                { "name": "蒸魚配青菜" }
+            ]
+        };
+
+        // 表單提交時處理
         document.getElementById("dietForm").addEventListener("submit", function(event) {
             event.preventDefault();  // 防止表單提交
 
@@ -68,13 +108,22 @@
                 healthStatus = "肥胖";
             }
 
-            // 將 BMI 和健康狀況傳遞到結果頁面
-            localStorage.setItem("bmi", bmi);
-            localStorage.setItem("healthStatus", healthStatus);
-            localStorage.setItem("goal", goal);  // 傳遞目標
+            // 根據目標選擇飲食計劃
+            let selectedDiet = dietPlans[goal];
 
-            // 重定向到結果頁面
-            window.location.href = "result.html";
+            // 如果偏好是素食，則過濾掉含肉類的選項
+            if (preference === "vegetarian") {
+                selectedDiet = selectedDiet.filter(item => !item.name.includes("肉"));
+            }
+
+            // 隨機選擇一個飲食建議
+            const randomDiet = selectedDiet[Math.floor(Math.random() * selectedDiet.length)];
+
+            // 顯示結果
+            document.getElementById("result").style.display = "block";  // 顯示結果區域
+            document.getElementById("bmiResult").textContent = bmi.toFixed(2);  // 顯示 BMI
+            document.getElementById("healthStatusResult").textContent = healthStatus;  // 顯示健康狀況
+            document.getElementById("dietSuggestion").textContent = randomDiet.name;  // 顯示飲食建議
         });
     </script>
 </body>
