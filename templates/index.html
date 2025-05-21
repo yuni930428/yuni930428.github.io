@@ -43,5 +43,38 @@
             <button type="submit" class="submit-btn">提交</button>
         </form>
     </div>
+
+    <script>
+        // 在表單提交之前計算 BMI
+        document.getElementById("dietForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // 防止表單提交
+
+            // 獲取用戶輸入的數據
+            const weight = parseFloat(document.getElementById("weight").value);
+            const height = parseFloat(document.getElementById("height").value);
+
+            // 計算 BMI
+            const bmi = weight / Math.pow(height / 100, 2);  // BMI = 體重 / (身高^2)
+
+            // 根據 BMI 顯示健康狀況
+            let healthStatus;
+            if (bmi < 18.5) {
+                healthStatus = "體重過輕";
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                healthStatus = "正常範圍";
+            } else if (bmi >= 25 && bmi < 29.9) {
+                healthStatus = "過重";
+            } else {
+                healthStatus = "肥胖";
+            }
+
+            // 將 BMI 和健康狀況傳遞到結果頁面
+            localStorage.setItem("bmi", bmi);
+            localStorage.setItem("healthStatus", healthStatus);
+
+            // 重定向到結果頁面
+            window.location.href = "result.html";
+        });
+    </script>
 </body>
 </html>
