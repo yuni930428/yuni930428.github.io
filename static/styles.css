@@ -1,0 +1,156 @@
+/* 重置樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0; /* 設置背景顏色 */
+    color: #333; /* 設置文字顏色 */
+    font-family: Arial, sans-serif;
+}
+
+/* 容器 */
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 700px;
+    margin: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.03); /* 鼠標懸停效果 */
+}
+
+/* 標題 */
+h1 {
+    color: #4CAF50; /* 設置標題顏色 */
+    text-align: center;
+}
+
+/* 表單布局 */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+input, select, button {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 8px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 焦點效果 */
+input:focus, select:focus {
+    border: 2px solid #0072ff;
+    box-shadow: 0 0 8px rgba(0, 114, 255, 0.5);
+}
+
+/* 提交按鈕樣式 */
+button {
+    background-color: #4CAF50; /* 設置按鈕顏色 */
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: #45a049; /* 鼠標懸停時按鈕顏色 */
+}
+
+button:active {
+    transform: translateY(2px); /* 按鈕點擊效果 */
+}
+
+/* 結果頁面 */
+.result {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.diet-suggestion {
+    margin-top: 30px;
+}
+
+.diet-suggestion img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+/* 返回按鈕 */
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.back-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+.back-btn:active {
+    transform: translateY(2px);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .diet-suggestion img {
+        max-width: 100%;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}
+
