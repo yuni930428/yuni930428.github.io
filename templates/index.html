@@ -55,31 +55,31 @@
         // 定義飲食計劃數據
         const dietPlans = {
             "weight_loss": [
-                { "name": "低卡蔬菜沙拉" ,"image": "田園沙拉.jpg.webp"},
-                { "name": "藜麥沙拉" },
-                { "name": "酪梨沙拉" },
-                { "name": "無米壽司" },
-                { "name": "水果沙拉" }
+                { "name": "低卡蔬菜沙拉", "image": "田園沙拉.jpg.webp" },
+                { "name": "藜麥沙拉", "image": "藜麥沙拉.JPG" },
+                { "name": "酪梨沙拉", "image": "酪梨沙拉.jpg" },
+                { "name": "無米壽司", "image": "無米壽司.jpg" },
+                { "name": "水果沙拉", "image": "水果沙拉.jpg" }
             ],
             "muscle_gain": [
-                { "name": "高蛋白雞胸肉" },
-                { "name": "煎鮭魚" },
-                { "name": "蛋白質奶昔" },
-                { "name": "牛排" },
-                { "name": "雞蛋料理" }
+               { "name": "高蛋白雞胸肉", "image": "高蛋白雞胸肉.jpg" },
+                { "name": "煎鮭魚", "image": "煎鮭魚.jpg" },
+                { "name": "蛋白質奶昔", "image": "蛋白質奶昔.jpg" },
+                { "name": "牛排", "image": "牛排.jpg" },
+                { "name": "雞蛋料理", "image": "雞蛋料理.jpg" }
             ],
             "balanced": [
-                { "name": "全麥三明治" },
-                { "name": "鮭魚蔬菜湯" },
-                { "name": "義大利麵" },
-                { "name": "櫛瓜煎餅" },
-                { "name": "全麥麵包" }
+                { "name": "全麥三明治", "image": "全麥三明治.jpg" },
+                { "name": "鮭魚蔬菜湯", "image": "鮭魚蔬菜湯.jpg" },
+                { "name": "義大利麵", "image": "義大利麵.jpg" },
+                { "name": "櫛瓜煎餅", "image": "櫛瓜煎餅.jpg" },
+                { "name": "全麥麵包", "image": "全麥麵包.jpg" }
             ],
             "maintain_weight": [
-                { "name": "雞肉蔬菜沙拉" },
-                { "name": "海鮮配蔬菜" },
-                { "name": "燕麥粥" },
-                { "name": "蒸魚配青菜" }
+                { "name": "雞肉蔬菜沙拉", "image": "雞肉蔬菜沙拉.jpg" },
+                { "name": "海鮮配蔬菜", "image": "海鮮配蔬菜.jpg" },
+                { "name": "燕麥粥", "image": "燕麥粥.jpg" },
+                { "name": "蒸魚配青菜", "image": "蒸魚配青菜.jpg" }
             ]
         };
 
@@ -124,6 +124,11 @@
             document.getElementById("bmiResult").textContent = bmi.toFixed(2);  // 顯示 BMI
             document.getElementById("healthStatusResult").textContent = healthStatus;  // 顯示健康狀況
             document.getElementById("dietSuggestion").textContent = randomDiet.name;  // 顯示飲食建議
+
+             // 顯示飲食圖片
+            const dietImage = document.getElementById("dietImage");
+            dietImage.src = "static/" + randomDiet.image;  // 設置圖片路徑
+            dietImage.alt = randomDiet.name;  // 設置圖片 alt 屬性
         });
     </script>
 </body>
