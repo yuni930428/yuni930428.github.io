@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>飲食計劃</title>
-    <link rel="stylesheet" href=".static/styles.css">
+    <link rel="stylesheet" href="../static/styles.css">  <!-- 確保正確引入 styles.css -->
 </head>
 <body>
     <div class="container">
@@ -48,6 +48,7 @@
             <p><strong>健康狀況：</strong> <span id="healthStatusResult"></span></p>
             <h3>飲食建議：</h3>
             <p id="dietSuggestion"></p>
+            <img id="dietImage" class="diet-image" alt="飲食建議圖片"> <!-- 顯示圖片 -->
         </div>
     </div>
 
@@ -55,18 +56,18 @@
         // 定義飲食計劃數據
         const dietPlans = {
             "weight_loss": [
-                { "name": "低卡蔬菜沙拉", "image": "蔬菜沙拉.png" },
+                { "name": "低卡蔬菜沙拉", "image": "田園沙拉.jpg.webp" },
                 { "name": "藜麥沙拉", "image": "藜麥.png" },
                 { "name": "酪梨沙拉", "image": "酪梨.png" },
                 { "name": "無米壽司", "image": "壽司.png" },
                 { "name": "水果沙拉", "image": "水果.png" }
             ],
             "muscle_gain": [
-               { "name": "高蛋白雞胸肉", "image": "雞胸.png" },
+                { "name": "高蛋白雞胸肉", "image": "雞胸.png" },
                 { "name": "煎鮭魚", "image": "鮭魚.png" },
                 { "name": "蛋白質奶昔", "image": "奶昔.png" },
                 { "name": "牛排", "image": "牛排.png" },
-                { "name": "雞蛋料理", "image": "早餐食譜,便當食譜-豐富蔬菜烘烤玉子燒 | MASAの料理ABC.jpg" }
+                { "name": "雞蛋料理", "image": "雞蛋.png" }
             ],
             "balanced": [
                 { "name": "全麥三明治", "image": "全麥三明治.png" },
@@ -124,9 +125,9 @@
             document.getElementById("healthStatusResult").textContent = healthStatus;  // 顯示健康狀況
             document.getElementById("dietSuggestion").textContent = randomDiet.name;  // 顯示飲食建議
 
-             // 顯示飲食圖片
+            // 顯示飲食圖片
             const dietImage = document.getElementById("dietImage");
-            dietImage.src = ".static/" + randomDiet.image;  // 設置圖片路徑
+            dietImage.src = "../static/" + randomDiet.image;  // 設置圖片路徑
             dietImage.alt = randomDiet.name;  // 設置圖片 alt 屬性
         });
     </script>
